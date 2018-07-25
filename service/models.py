@@ -31,7 +31,10 @@ def get_unique_slug_generator(instance, new_slug=None):
 
 
 def get_category_default():
-    return Category.objects.get(name='other').pk
+    try:
+        return Category.objects.get(name='other').pk
+    except:
+        return None
 
 
 class Service(models.Model):
