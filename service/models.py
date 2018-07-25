@@ -33,7 +33,7 @@ def get_unique_slug_generator(instance, new_slug=None):
 def get_category_default():
     try:
         return Category.objects.get(name='other').pk
-    except:
+    except Category.DoesNotExist:
         return None
 
 
