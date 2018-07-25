@@ -1,0 +1,329 @@
+{% extends 'base-site.html' %}
+{% load static %}
+    {% block title %}Consulting - Home{% endblock %}
+
+    {% block css %}
+    {% endblock %}
+
+    {% block breadcrumb %}
+    {% endblock %}
+
+    {% block content %}
+    <!-- slider-area-start -->
+    <div class="slider-area">
+      <div class="slider-active">
+
+        {% for obj in banner %}
+        <div class="slider-wrapper single-slider height-800 d-flex align-items-center" style="background-image:url({{ obj.image.url }})">
+          <div class="container">
+            <div class="slider-content">
+              <h1 data-animation="fadeInUp" data-delay=".4s">{{ obj.title }}</h1>
+              <p data-animation="fadeInUp" data-delay=".8s">{{ obj.details }}</p>
+              <div class="slider-button">
+                <a class="btn" href="#" data-animation="fadeInLeft" data-delay="1.2s">read more
+                  <i class="fas fa-long-arrow-alt-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <!-- slider-area-end -->
+    <!-- experience-area-start -->
+    {% include "contact\snippets\call_to_action.html" with context="Needs experience business consultant?" only %}
+    <!-- experience-area-end -->
+    <!-- featured-area-start -->
+    <div class="featured-area pt-110 pb-90">
+      <div class="container">
+        <div class="section-title text-center mb-50">
+          <h1>Awesome Featured</h1>
+          <p> Nullam varius turpis et commodo pharetra est eros bibendum elitnec luctus magna felis sollicitudin mauris. Integer mauris eu nibh euismod graviduis tellus etvulp utate vehicula.</p>
+        </div>
+        <div class="row">
+          {% for feature in features %}
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+            <div class="featured-wrapper text-center mb-30">
+              <div class="featured-img">
+                <img src="{{ feature.image.url }}" alt="" />
+              </div>
+              <div class="featured-text">
+                <div class="featured-tag">
+                  <span>{{ forloop.counter}}</span>
+                </div>
+                <h4><a href="#">{{ feature.title|title }}</a></h4>
+                <p>{{ feature.details }}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <!-- featured-area-end -->
+    <!-- our-recent-area-start -->
+		<div class="our-recent-area pt-110 pb-255" style="background-image:url({% static 'img/bg/bg1.jpg' %})">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-12">
+						<div class="our-recent-wrapper">
+							<div class="our-recent-text text-center">
+								<span>What we have done</span>
+								<h1>Our Recent Success History</h1>
+								<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur p tincidunt la Nulla gravida orci a odio. Nullam varius turpis et.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- our-recent-area-end -->
+    <!-- counter-area-start -->
+    <div class="counter-area">
+      <div class="container">
+        <div class="counter-bg pt-100 pb-75">
+          <div class="row">
+            {% for obj in achievements %}
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+              <div class="counter-wrapper mb-30">
+                <div class="counter-text text-center">
+                  <h1 class="counter">{{ obj.total }}</h1>
+                  <span>{{ obj.name|title }}</span>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- counter-area-end -->
+    <!-- services-area-start -->
+    <div class="services-area pt-200 pb-90 gray-bg">
+      <div class="container">
+        <div class="section-title text-center mb-50">
+          <h1>We Provides Best Services</h1>
+          <p> Nullam varius turpis et commodo pharetra est eros bibendum elitnec luctus magna felis sollicitudin mauris. Integer mauris eu nibh euismod graviduis tellus etvulp utate vehicula.</p>
+        </div>
+        <div class="row">
+          {% for obj in services %}
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+            {% include 'service/snippets/service_card.html' %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <!-- services-area-end -->
+    <!-- we-are-area-start -->
+		<div class="we-are-area pt-105 pb-80" style="background-image:url({{ whoweare.image.url }})">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-8">
+						<div class="we-area-wrapper">
+							<div class="we-area-text">
+								<h1>{{ whoweare.title }}</h1>
+								<span>{{ whoweare.sub_title }}</span>
+								<p>{{ whoweare.details }}</p>
+							</div>
+						</div>
+						<div class="row justify-content-between">
+              {% for obj in whoweare.strategy.all|slice:':3' %}
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 mb-30">
+								<div class="progress-wrapper">
+									<div class="circular-progress" data-percent="{{ obj.length }}" data-scale-color="#fdc800"><span>{{ obj.length }}%</span></div>
+									<div class="progress-content">
+										<h4>{{ obj.name }}</h4>
+									</div>
+								</div>
+							</div>
+              {% endfor %}
+            </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- we-are-area-end -->
+		<!-- business-area-start -->
+		<div class="business-area pt-105 pb-110" style="background-image:url({% static 'img/bg/bg2.jpg' %})">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-12">
+						<div class="business-wrapper">
+							<div class="business-text text-center">
+                {% if ceo is None %}
+                <p class='danger'>Team of Ceo Not Found</p>
+                {% else %}
+								<p>{{ ceo.messagefromteam_set.first.message }}</p>
+								<span>{{ ceo.name|upper }} ({{ ceo.title }})</span>
+                {% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- business-area-end -->
+		<!-- recent-project-area-strat -->
+		<div class="recent-project-area pt-110 pb-120">
+			<div class="container">
+				<div class="section-title text-center mb-50">
+					<h1>Recent Project</h1>
+					<p> Nullam varius turpis et commodo pharetra est eros bibendum elitnec luctus magna felis sollicitudin mauris. Integer mauris
+						eu nibh euismod graviduis tellus etvulp utate vehicula.</p>
+				</div>
+				<div class="row">
+					<div class="col-xl-12">
+						<ul class="nav recent-project-tab justify-content-center mb-55" id="myTab" role="tablist">
+              {% for cat in categorys %}
+							<li class="nav-item">
+								<a class="nav-link" id="{{ cat.name }}-tab" data-toggle="tab" href="#{{ cat.name }}">{{ cat.name|title }}</a>
+							</li>
+              {% endfor %}
+						</ul>
+          </div>
+        </div>
+				<div class="tab-content" id="myTabContent">
+          {% for cat in categorys %}
+					<div class="tab-pane fade" id="{{ cat.name }}" role="tabpanel" aria-labelledby="{{ cat.name }}-tab">
+						<div class="row">
+							<div class="recent-project-active owl-carousel">
+                {% for portfolio in cat.service__set.all %}
+								<div class="col-xl-12">
+									<div class="recent-project-wrapper">
+										<div class="recent-project-img">
+											<a href="#">
+												<img src="{{ portfolio.image.url }}" alt="" />
+											</a>
+											<div class="product-button">
+												<a href="#">{{ portfolio.service.name|title }}</a>
+											</div>
+										</div>
+									</div>
+								</div>
+                {% endfor %}
+							</div>
+						</div>
+					</div>
+          {% endfor %}
+        </div>
+			</div>
+		</div>
+		<!-- project-area-end -->
+		<!-- request-area-start -->
+		<div class="request-area pt-110 pb-115" style="background-image:url({% static 'img/bg/bg3.jpg' %})">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-6 col-lg-8">
+						<div class="request-wrapper">
+							<div class="request-text">
+								<h1>Request a Call Back</h1>
+								<p>Nullam varius turpis et commodo pharetra est eros bibendum elitnec luctus magna felis sollicitudin mauris. Integer mauris eu nibhe.</p>
+							</div>
+							<span class="discuss">I would like to discuss:</span>
+							<form action="{% url 'contact:quote_submit' %}" method="post" id="request-form">{% csrf_token %}
+								<div class="row">
+									<div class="col-xl-6 mb-30">
+										{{ quote.service|title }}
+									</div>
+									<div class="col-xl-6 mb-30">
+										{{ quote.name }}
+									</div>
+									<div class="col-xl-6 mb-30">
+										{{ quote.email }}
+									</div>
+									<div class="col-xl-6 mb-30">
+										{{  quote.number }}
+									</div>
+                  <!--{{ quote.as_p }}-->
+									<div class="col-xl-12">
+										<button class="btn">submit <i class="fas fa-long-arrow-alt-right"></i></button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- request-area-end -->
+		<!-- clients-area-start -->
+		<div class="clients-area pt-110 pb-120">
+			<div class="container">
+				<div class="section-title text-center mb-50">
+					<h1>Clients Say</h1>
+					<p> Nullam varius turpis et commodo pharetra est eros bibendum elitnec luctus magna felis sollicitudin mauris. Integer mauris eu nibh euismod graviduis tellus etvulp utate vehicula.</p>
+				</div>
+				<div class="row">
+					<div class="clients-active owl-carousel">
+            {% for obj in testimonials %}
+						<div class="col-lg-12">
+							<div class="clients-wrapper">
+								<div class="clients-img">
+									<img src="{{ obj.image.url  }}" alt="" />
+								</div>
+								<div class="clients-text">
+									<h5>{{ obj.name|title }}</h5>
+									<span>{{ obj.title|title }}</span>
+								</div>
+								<p>{{ obj.speach }}</p>
+							</div>
+						</div>
+            {% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- clients-area-end -->
+		<!-- news-area-start -->
+		<div class="news-area gray-bg pt-110 pb-90">
+			<div class="container">
+				<div class="section-title text-center mb-50">
+					<h1>Our Latest Tips & News</h1>
+					<p> Nullam varius turpis et commodo pharetra est eros bibendum elitnec luctus magna felis sollicitudin mauris. Integer mauris eu nibh euismod graviduis tellus etvulp utate vehicula.</p>
+				</div>
+				<div class="row">
+          {% for blog in blogs %}
+					<div class="col-lg-4 col-lg-4 col-md-6 col-sm1-2">
+						<div class="news-wrapper mb-30">
+							<div class="news-img">
+								<a href="{{ blog.get_absolute_url }}"><img src="{{ blog.image.url }}" alt="" /></a>
+								<div class="news-info">
+									<a class="btn" href="#">{{ blog.tag.parent_tag }}</a>
+									<span>{{ blog.timestrimp|timesince }}</span>
+								</div>
+							</div>
+							<div class="news-text">
+								<div class="news-meta">
+									<span>Post By <a href="#">{{ blog.user }}</a></span>
+									<span>Comments (03)</span>
+								</div>
+								<h4><a href="{{ blog.get_absolute_url }}">{{ blog.title|truncatechars:60 }}</a></h4>
+							</div>
+						</div>
+					</div>
+          {% endfor %}
+				</div>
+			</div>
+		</div>
+		<!-- news-area-end -->
+		<!-- brand-area-start -->
+		<div class="brand-area pt-80 pb-80">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="brand-active owl-carousel">
+            {% for partner in partners %}
+						<div class="col-xl-12">
+              {% include 'snippets/partner.html' %}
+						</div>
+            {% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- brand-area-end -->
+    {% endblock %}
+
+    {% block js %}
+    {% endblock %}

@@ -1,0 +1,179 @@
+{% extends 'base-site.html' %}
+{% load static %}
+    {% block title %}{% endblock %}
+
+    {% block css %}
+    {% endblock %}
+
+    {% block breadcrumb %}
+    <!-- breadcrumb-area-start -->
+    <div class="breadcrumb-area pt-245 pb-245 " style="background-image:url({% static 'img/bg/bg9.jpg' %})">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="breadcrumb-text">
+              <h1>We provide best services <br> for your business</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- breadcrumb-area-start -->
+    {% endblock %}
+
+    {% block content %}
+    <!-- our-service-area-start -->
+    <div class="our-service-area pt-120 pb-85">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="our-service-img">
+              <img src="{% static 'img/service/1.jpg' %}" alt="" />
+            </div>
+            <div class="row">
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                <div class="our-service-wrapper pr-40 mb-30">
+                  <div class="our-service-text">
+                    <h3>Business Analysis</h3>
+                    <p>Sorem ipsum dolor sit amet consectetur eiusmod tempor incididunt ut labore et dolore magna aliqi enim ad minim veniam, quis nostrud exercitation ulla laborist nisi ut aliquip exea commodo csquat. Duis aut irurei dolor in repreh.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                <div class="our-service-wrapper pr-20 pl-20 mb-30">
+                  <div class="our-service-text">
+                    <h3>Digital Marketing</h3>
+                    <p>Sorem ipsum dolor sit amet consectetur eiusmod tempor incididunt ut labore et dolore magna aliqi enim ad minim veniam, quis nostrud exercitation ulla laborist nisi ut aliquip exea commodo csquat. Duis aut irurei dolor in reprehenderit in volutate velit esse cillum dolore pariatur. </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                <div class="our-service-wrapper pl-45 mb-30">
+                  <div class="our-service-text">
+                    <h3>Strategy Operations</h3>
+                    <p>Sorem ipsum dolor sit amet consectetur eiusmod tempor incididunt ut labore et dolore magna aliqi enim ad minim veniam, quis nostrud exercitation ulla laborist nisi ut aliquip exea commodo csquat. Duis aut irurei dolor in reprehenderit in volutate velit esse cillum dolore pariatur. </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- our-service-area-end -->
+    <!-- services-area-start -->
+    <div class="services-area pt-115 pb-90 gray-bg">
+      <div class="container">
+        <div class="section-title section3-title text-center mb-50">
+          <h1>We Provides Best Services</h1>
+          <p> Nullam varius turpis et commodo pharetra est eros bibendum elitnec luctus magna felis sollicitudin mauris. Integer mauris eu nibh euismod graviduis tellus etvulp utate vehicula.</p>
+        </div>
+        <div class="row">
+          {% for obj in object_list %}
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+            {% include 'service/snippets/service_card.html' %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <!-- services-area-end -->
+    <!-- pricing-area-start -->
+    <div class="pricing-area pt-110 pb-90">
+      <div class="container">
+        <div class="section-title section3-title text-center mb-50">
+          <h1>Our Latest Pricing</h1>
+          <p> Nullam varius turpis et commodo pharetra est eros bibendum elitnec luctus magna felis sollicitudin mauris. Integer mauris eu nibh euismod graviduis tellus etvulp utate vehicula.</p>
+        </div>
+        <div class="row">
+          {% for price in price_table %}
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+            <div class="pricing-wrapper single-pricing text-center mb-30">
+              <div class="pricing-top-text">
+                <h3>{{ price.title }}</h3>
+              </div>
+              <div class="pricing-text">
+                <h2>${{ price.price }} <span>Monthly</span></h2>
+              </div>
+              <ul class="pricing-menu">
+                  {% for detail in price.details.all %}
+                <li>{{ detail.name }}</li>
+                  {% endfor %}
+              </ul>
+              <div class="pricing-button">
+                <a href="#">choose plan</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <!-- pricing-area-end -->
+    <!-- services-area-start -->
+    <div class="services-area pt-110 pb-90 gray-bg">
+      <div class="container">
+        <div class="section-title section3-title text-center mb-50">
+          <h1>Our Populer Services</h1>
+          <p> Nullam varius turpis et commodo pharetra est eros bibendum elitnec luctus magna felis sollicitudin mauris. Integer mauris eu nibh euismod graviduis tellus etvulp utate vehicula.</p>
+        </div>
+        <div class="row">
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+            <div class="services-wrapper text-center mb-30">
+              <div class="services-img">
+                <img src="img/service/7.png" alt="" />
+              </div>
+              <div class="services-text">
+                <h4>Tours & Travels</h4>
+                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur preti tdunt lacusul- la gravida orci  pharetra </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+            <div class="services-wrapper text-center mb-30">
+              <div class="services-img">
+                <img src="img/service/9.png" alt="" />
+              </div>
+              <div class="services-text">
+                <h4>Insurance Planning</h4>
+                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur preti tdunt lacusul- la gravida orci  pharetra </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+            <div class="services-wrapper text-center mb-30">
+              <div class="services-img">
+                <img src="img/service/8.png" alt="" />
+              </div>
+              <div class="services-text">
+                <h4>Trusted Monitoring</h4>
+                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur preti tdunt lacusul- la gravida orci  pharetra </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- services-area-end -->
+    <!-- experience-area-start -->
+    {% include "contact\snippets\call_to_action.html" with context="Needs experience business consultant?" only %}
+    <!-- experience-area-end -->
+    <!-- brand-area-start -->
+		<div class="brand-area pt-80 pb-80">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="brand-active owl-carousel">
+            {% for partner in partners %}
+						<div class="col-xl-12">
+              {% include 'snippets/partner.html' %}
+						</div>
+            {% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- brand-area-end -->
+    {% endblock %}
+
+    {% block js %}
+    {% endblock %}

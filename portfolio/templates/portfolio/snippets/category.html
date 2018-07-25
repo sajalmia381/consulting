@@ -1,0 +1,6 @@
+<div class="portfolio-menu text-center mb-45">
+  <button class="active" data-filter="*">All</button>
+  {% for cat in categorys %}
+  <button data-filter=".{{ cat.name }}">{{ cat.name|title }}</button>
+  {% endfor %}
+</div>

@@ -1,0 +1,16 @@
+<div class="experience-area yellow-bg pt-50 pb-30">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 col-lg-9 col-md-8">
+        <div class="experience-text mb-20">
+           <h2>{{ context }}</h2>
+        </div>
+      </div>
+      <div class="col-xl-4 col-lg-3 col-md-4">
+        <div class="experience-button text-md-right mb-20">
+          <a class="btn" href="#">contact us <i class="fas fa-long-arrow-alt-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

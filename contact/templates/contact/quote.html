@@ -1,0 +1,46 @@
+{% extends 'base-site.html' %}
+{% load static %}
+    {% block title %}Contact{% endblock %}
+
+    {% block css %}
+    <stype>
+        .quote_form button{
+            padding: 17px 65px;
+            border-radius: inherit;
+            letter-spacing: 1px;
+            transition: .3s;
+        }
+    </stype>
+    {% endblock %}
+
+    {% block breadcrumb %}
+    <!-- breadcrumb-area-start -->
+    <div class="breadcrumb-area pt-245 pb-245 " style="background-image:url({% static 'img/bg/bg9.jpg' %})">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="breadcrumb-text text-center">
+              <h1>Quote</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- breadcrumb-area-start -->
+    {% endblock %}
+
+    {% block content %}
+    <section class="pb-90 pt-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-12">
+                    <form class="quote_form" action="" method="post">{% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+

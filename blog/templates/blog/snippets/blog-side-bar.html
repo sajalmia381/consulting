@@ -1,0 +1,168 @@
+<div class="sidebar-blog pl-30">
+  <div class="widget">
+    <h4 class="widget-title">Search here</h4>
+    <div class="sidebar-form">
+      {% include 'search\snippets\search_form.html' %}
+    </div>
+  </div>
+  <div class="widget">
+    <h4 class="widget-title">Category</h4>
+    <div class="widget-link">
+      <ul class="sidebar-link">
+        {% for tag in parent_tags|dictsort:'name' %}
+        <li>
+          <a href="#">{{ tag.name|title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="widget">
+    <h4 class="widget-title">Recent Posts</h4>
+    <div class="sidebar-rc-post">
+      <ul>
+        {% for object in blog_widget %}
+        <li>
+          <div class="rc-post-thumb">
+            <a href="{{ object.get_absolute_url }}">
+              <img src="{{ object.image.url }}" alt="" />
+            </a>
+          </div>
+          <div class="rc-post-content">
+            <h4>
+              <a href="{{ object.get_absolute_url }}">{{ object.title|truncatechars:45 }}</a>
+            </h4>
+            <div class="widget-date">{{ object.timestrimp|date}}</div>
+          </div>
+        </li>
+        {% endfor  %}
+      </ul>
+    </div>
+  </div>
+  <div class="widget">
+    <h4 class="widget-title">My Social link</h4>
+    <div class="widget-social">
+      <a class="facebook" href="#">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a class="twitter" href="#">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a class="instagram" href="#">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a class="googleplus" href="#">
+        <i class="fab fa-google-plus-g"></i>
+
+      </a>
+      <a class="linkedin" href="#">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </div>
+  </div>
+  <div class="widget">
+    <h4 class="widget-title">Archives</h4>
+    <div class="widget-link">
+      <ul class="sidebar-link">
+        <li>
+          <a href="#">January 2017</a>
+          <span>(1)</span>
+        </li>
+        <li>
+          <a href="#">December 2016</a>
+          <span>(2)</span>
+        </li>
+        <li>
+          <a href="#">November 2016</a>
+          <span>(1)</span>
+        </li>
+        <li>
+          <a href="#">October 2016</a>
+          <span>(1)</span>
+        </li>
+        <li>
+          <a href="#">August 2016</a>
+          <span>(3)</span>
+        </li>
+        <li>
+          <a href="#">July 2016</a>
+          <span>(1)</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="widget">
+    <h4 class="widget-title">Popular Tags</h4>
+    <div class="widget-tags">
+      <ul class="sidebar-tad">
+        <li>
+          <a href="#">Html</a>
+        </li>
+        <li>
+          <a href="#">css</a>
+        </li>
+        <li>
+          <a href="#">PHP</a>
+        </li>
+        <li>
+          <a href="#">WP</a>
+        </li>
+        <li>
+          <a href="#">Best</a>
+        </li>
+        <li>
+          <a href="#">Joomla</a>
+        </li>
+        <li>
+          <a href="#">Shopify</a>
+        </li>
+        <li>
+          <a href="#">jQuery</a>
+        </li>
+        <li>
+          <a href="#">clean</a>
+        </li>
+        <li>
+          <a href="#">Simple</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="widget">
+    <h4 class="widget-title">Instagram</h4>
+    <div class="widget-instagram">
+      <ul class="instagram-link">
+        <li>
+          <a href="#">
+            <img src="img/instagram/insta1.jpg" alt="" />
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="img/instagram/insta2.jpg" alt="" />
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="img/instagram/insta3.jpg" alt="" />
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="img/instagram/insta4.jpg" alt="" />
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="img/instagram/insta5.jpg" alt="" />
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="img/instagram/insta6.jpg" alt="" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

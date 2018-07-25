@@ -1,0 +1,159 @@
+{% extends 'base-site.html' %}
+{% load staticfiles %}
+    {% block title %}Blog Details{% endblock %}
+
+    {% block css %}
+    {% endblock %}
+
+    {% block breadcrumb %}
+    <!-- breadcrumb-area-start -->
+    <div class="breadcrumb-area pt-245 pb-245 " style="background-image:url({% static 'img/bg/bg9.jpg' %})">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="breadcrumb-text text-center">
+              <h1>Latest Blog</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- breadcrumb-area-start -->
+    {% endblock %}
+
+    {% block content %}
+    <!-- latest-news-area-start -->
+    <div class="latest-news-area pt-120 pb-70">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-8 col-lg-8 col-sm-12">
+            <div class="blog-list">
+              <div class="latest-news-wrapper blog-details mb-50">
+                <div class="latest-news-img">
+                  <img src="{{ object.image.url }}" alt="" />
+                </div>
+                <div class="latest-news-text">
+                  <div class="blog-meta">
+                    <span>By {{ object.user }}</span>
+                    <span>{{ object.timestrimp|date }}</span>
+                  </div>
+                  <h4>{{ object.title }}</h4>
+                  <p>{{ object.paragraph|linebreaks }}</p>
+                  <h5>{{ object.sub_title }}</h5>
+                  <p>{{ object.sub_paragraph|linebreaks }}</p>
+                </div>
+              </div>
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="blog-post-tag">
+                                        {% for tag in object.tag.all %}
+                                        <a href="#">{{ tag.name|upper }}</a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6">
+                                    <div class="blog-share-icon text-left text-md-right">
+                                        <span>Share: </span>
+                                        <a href="#">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fab fa-google-plus-g"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-comments mt-70">
+                                {% if comments %}
+                                <div class="post-heading-title mb-50">
+                                    <h2>Recent Comments</h2>
+                                </div>
+                                <div class="latest-comments">
+                                    <ul>
+                                        {% for comment in comments %}
+                                        <li>
+                                            <div class="comments-box">
+                                                <div class="comments-avatar">
+                                                  {% if comment.image %}
+                                                    <img src="{{ comment.image.url }}" alt="">
+                                                  {% endif %}
+                                                </div>
+                                                <div class="comments-text">
+                                                    <div class="avatar-name">
+                                                        <h5>{{ comment.full_name }}</h5>
+                                                        <span>{{ comment.timestrimp|date }}</span>
+                                                    </div>
+                                                    <p>{{ comment.text }}</p>
+                                                    <a href="#">Reply</a>
+                                                </div>
+                                            </div>
+                                            {% if replys %}
+                                            <ul class="comments-reply">
+                                            {% for reply in comment.reply__set.all %}
+                                                <li>
+                                                    <div class="comments-box">
+                                                        <div class="comments-avatar">
+                                                            <img src="{{ reply.image.url }}" alt="">
+                                                        </div>
+                                                        <div class="comments-text">
+                                                            <div class="avatar-name">
+                                                                <h5>{{ reply.full_name|title }}</h5>
+                                                                <span>{{ reply.timestrimp|date }}</span>
+                                                            </div>
+                                                            <p>{{ reply.text }}</p>
+                                                            <a href="#">Reply</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                {% endfor %}
+                                            </ul>
+                                            {% endif %}
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% else %}
+                                <div class="post-heading-title">
+                                    <h2>No Comment Yet</h2>
+                                </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="post-comments-form pt-40 pr-100 mb-50">
+                                <div class="post-heading-title mb-30">
+                                    <h2>Make Comments</h2>
+                                </div>
+                                <form action="{% url 'blog:parent_comment' pk=object.id %}" method="post">{% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            {{ form.full_name }}
+                                        </div>
+                                        <div class="col-xl-6">
+                                            {{ form.email }}
+                                        </div>
+                                        <div class="col-xl-12">
+                                            {{ form.text }}
+                                            <button class="btn blue-gradient" type="submit">Post Comments</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-4">
+            {% include 'blog/snippets/blog-side-bar.html' %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- latest-news-area-end -->
+    {% endblock %}
+
+    {% block js %}
+    {% endblock %}

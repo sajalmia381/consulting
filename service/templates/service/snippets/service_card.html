@@ -1,0 +1,9 @@
+<div class="services-wrapper text-center mb-30">
+  <div class="services-img">
+    <img src="{{ obj.icon.url }}" alt="{{ obj.name }} Image File Missing" />
+  </div>
+  <div class="services-text">
+    <a href="{{ obj.get_absolute_url }}"><h4>{{ obj.name|title}}</h4></a>
+    <p>{{ obj.details|truncatechars:110 }}</p>
+  </div>
+</div>

@@ -1,0 +1,253 @@
+{% extends 'base-site.html' %}
+{% load static %}
+    {% block title %}{% endblock %}
+
+    {% block css %}
+    {% endblock %}
+
+    {% block breadcrumb %}
+    <!-- breadcrumb-area-start -->
+    <div class="breadcrumb-area pt-245 pb-245 " style="background-image:url({% static 'img/bg/bg9.jpg' %})">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="breadcrumb-wrapper text-center">
+              <div class="breadcrumb-text">
+              <h1>{{ object.name|title }} Details</h1>
+              </div>
+              <div class="breadcrumb-menu mt-20">
+                <ul>
+                  <li><a href="{% url 'home:index' %}">home</a></li>
+                  <li><a href="{% url 'service:service_list' %}">services</a></li>
+                  <li><span>{{ object.name|title }}</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- breadcrumb-area-start -->
+    {% endblock %}
+
+    {% block content %}
+    <!-- services-details-area-start -->
+    <div class="services-details-area pt-120 pb-75">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-4 col-lg-4 mb-30">
+            <div class="widget mb-60">
+              <div class="widget-heading">
+                <h2><i class="fas fa-chess-board"></i> Services</h2>
+              </div>
+              <ul class="service-details-menu">
+                {% for obj in service_list %}
+                <li><a href="{{ obj.get_absolute_url }}"><i class="fas fa-long-arrow-alt-right"></i>{{ obj.name|title }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="widget theme-bg mb-60">
+              <ul class="service-details-link">
+                <li><a href="#"><i class="far fa-file-pdf"></i>Download Brochure.pdf</a></li>
+                <li><a href="#"><i class="far fa-file-word"></i>Download Brochure.doc</a></li>
+                <li><a href="#"><i class="far fa-file-excel"></i>Download Brochure.xls</a></li>
+                <li><a href="#"><i class="far fa-file-powerpoint"></i>Download Brochure.Powerpoint</a></li>
+              </ul>
+            </div>
+            <div class="widget theme-bg">
+              <div class="service-details-left">
+                <div class="service-left-text">
+                  <h3>Do you have any Question?</h3>
+                  <p>Maecenas fermentum conse quat onec fermentum. Pellentesque malesuada nulla a miduis sapien sem </p>
+                  <a href="#"><i class="fas fa-phone-volume"></i> 0123456789</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-8 col-lg-8 mb-30">
+            <div class="service-details-wrapper">
+              <div class="service-details-img">
+                <img src="{{ object.image.url }}" alt="" />
+              </div>
+              <div class="service-details-text">
+                <h3>{{ object.title|title }}</h3>
+                <p>{{ object.details }}</p>
+              </div>
+              {% if object.title_2 %}
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 mb-50">
+                  <div class="single-service-details">
+                    <h3>{{ object.title_2|title }}</h3>
+                    <p>{{ object.details_2 }}</p>
+                  </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 mb-50">
+                  <div class="service1-details-img">
+                    <img src="{{ object.image_2.url }}" alt="" />
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              {% if showcase_image_1 %}
+              <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-4 mb-30">
+                  <div class="sevices-details-img">
+                    <img src="{{ object.showcase_image_1 }}" alt="" />
+                  </div>
+                </div>
+                {% if showcase_image_2 %}
+                <div class="col-xl-4 col-lg-4 col-md-4 mb-30">
+                  <div class="sevices-details-img">
+                    <img src="{{ object.showcase_image_2 }}" alt="" />
+                  </div>
+                </div>
+                {% endif %}
+                {% if showcase_image_3 %}
+                <div class="col-xl-4 col-lg-4 col-md-4 mb-30">
+                  <div class="sevices-details-img">
+                    <img src="{{ object.showcase_image_2 }}" alt="" />
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+              {% endif %}
+              {% if object.title_3 %}
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 mb-45">
+                  <div class="service-details-business-text">
+                    <h4>{{ object.title_3|title }}</h4>
+                    <p>{{ object.details_3 }}</p>
+                  </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 mb-45">
+                  <div class="service-details-business-text pl-25">
+                    {% if object.title_4 %}
+                    <h4>{{ object.title_4|title }}</h4>
+                    <p>{{ object.details_4 }}</p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+               <div class="question-collapse single-question">
+                <div class="questions-title">
+                  <h3>What We Do For You</h3>
+                </div>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        While nearly fourth of the world ?
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                    <p>Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctumagna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elittiam temport ullamcorper ligula eu tempor congue</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Nearly of the most popular ?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="card-body">
+                                    <p>Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctumagna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elittiam temport ullamcorper ligula eu tempor congue</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        The case allows to lead a discussion ?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                <div class="card-body">
+                                    <p>Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctumagna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elittiam temport ullamcorper ligula eu tempor congue</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingfour">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                                        Chocolate had asked for time ?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordion">
+                                <div class="card-body">
+                                    <p>Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctumagna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elittiam temport ullamcorper ligula eu tempor congue</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingfive">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
+                                        But Becker worried out on rents ?
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapsefive" class="collapse" aria-labelledby="headingfive" data-parent="#accordion">
+                                <div class="card-body">
+                                    <p>Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctumagna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elittiam temport ullamcorper ligula eu tempor congue</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- services-details-area-end -->
+    <!-- experience-area-start -->
+    <div class="experience-area yellow-bg pt-50 pb-30">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-8 col-lg-9 col-md-8">
+            <div class="experience-text mb-20">
+              <h2>Needs experience business consultant?</h2>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-3 col-md-4">
+            <div class="experience-button text-md-right mb-20">
+              <a class="btn" href="#">contact us <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- experience-area-end -->
+    <!-- brand-area-start -->
+    <div class="brand-area pt-80 pb-80">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="brand-active owl-carousel">
+            {% for partner in partners %}
+						<div class="col-xl-12">
+              {% include 'snippets/partner.html' %}
+						</div>
+            {% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+    <!-- brand-area-end -->
+
+    {% endblock %}
+
+    {% block js %}
+    {% endblock %}

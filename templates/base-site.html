@@ -1,0 +1,233 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+    {% block title %}{% endblock %}
+
+    {% block css %}
+    {% endblock %}
+
+    {% block header %}
+    <!-- header-start -->
+    {% url 'home:index' as index_url %}
+    {% url 'service:service_list' as service_url %}
+    {% url 'portfolio:portfolio_list' as portfolio_url %}
+    {% url 'about:about' as about_url %}
+    {% url 'blog:blog_list' as blog_url %}
+    {% url 'contact:contact_index' as contact_url %}
+    <header>
+      <!-- header-top-area-start -->
+      <div class="header-top-area theme-bg">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+              <ul class="header-wrapper">
+                <li>
+                  <div class="header-icon">
+                    <i class="fas fa-phone"></i>
+                  </div>
+                  <div class="header-text">
+                    <a href="callto:{{ information.number }}">+{{ information.number }}</a>
+                  </div>
+                </li>
+                <li>
+                  <div class="header-icon">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                  <div class="header-text">
+                    <a href="mailto:{{ information.email }}">{{ information.email }}</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+              <div class="header-right-wrapper">
+                <ul class="headers-icon">
+                  <li><a href="{{ information.facebook }}"><i class="fab fa-facebook-f"></i></a></li>
+                  <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                  <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                  <li><a href="#"><i class="fab fa-skype"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- header-top-area-end -->
+      <div class="header-menu">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-3 col-lg-3">
+              <div class="logo">
+                <a href="{{ index_url }}"><img src="{{ information.logo.url }}" alt="LoGo Missing" /></a>
+              </div>
+            </div>
+            <div class="col-xl-9 col-lg-9">
+              <div class="header-button d-none d-sm-none d-md-none d-lg-block">
+                <a class="btn" href="#">get a quote <i class="fas fa-long-arrow-alt-right"></i></a>
+              </div>
+                 <div class="main-menu text-center">
+                     <nav id="mobile-menu">
+                         <ul>
+                           <li><a href="{{ index_url }}">home</a></li>
+                           <li><a href="{{ about_url }}">About Us</a>
+                           <li><a href="{{ service_url }}">Services</a></li>
+                           <li><a href="{{ portfolio_url }}">Portfolio </a></li>
+                           <!--<li><a href="cases-studies.html">Cases</a>-->
+                            <!--<ul class="submenu">-->
+                              <!--<li>-->
+                                <!--<a href="cases-studies.html"> Cases </a>-->
+                              <!--</li>-->
+                              <!--<li>-->
+                                <!--<a href="cases-studies-details.html">Cases Details</a>-->
+                              <!--</li>-->
+                            <!--</ul>-->
+                          <!--</li>-->
+                          <li {% if request.path == blog_url %}class='active'{% endif %}><a href="{{ blog_url }}">Blog</a></li>
+                          <li><a href="{{ contact_url }}">Contact</a>
+                    </nav>
+                 </div>
+              <div class="mobile-menu"></div>
+                       </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- header-end -->
+    {% endblock %}
+
+    {% block breadcrumb %}
+	  {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block footer %}
+    <!-- footer-start -->
+    <footer>
+      <div class="footer-top-area theme-bg pt-80">
+        <div class="container">
+          <div class="footer-border pb-45">
+            <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+              <div class="footer-wrapper mb-30">
+                <div class="footer-logo">
+                  <a href="index-6.html"><img src="{{ information.logo_2.url }}" alt="" /></a>
+                </div>
+                <div class="footer-text">
+                  <p>{{ information.details }}</p>
+                </div>
+                <ul class="footer-icon">
+                  <li><a href="{{ information.facebook }}"><i class="fab fa-facebook-f"></i></a></li>
+                  <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                  <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                  <li><a href="#"><i class="fab fa-skype"></i></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+              <div class="footer-wrapper mb-30">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-menu">
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Condition</a></li>
+                  <li><a href="#">Support</a></li>
+                  <li><a href="#">Consultation</a></li>
+                  <li><a href="#">Team Member</a></li>
+                  <li><a href="#">Our Services</a></li>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="#">Who we are</a></li>
+                  <li><a href="#">Get a Quote</a></li>
+                  <li><a href="#">Recent Post</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+              <div class="footer-wrapper mb-30">
+                <h3 class="footer-title">Recent Post</h3>
+                <ul class="recent-menu">
+                  {% for blog in blog_widget %}
+                  <li>
+                    <div class="recent-text">
+                      <h6><a href="{{ blog.get_absolute_url }}">{{ blog.title|truncatechars:60 }}</a></h6>
+                    </div>
+                    <div class="recent-icon">
+                      <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="recent-info">
+                      <span>{{ blog.timestrimp|date }}</span>
+                    </div>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+              <div class="footer-wrapper mb-30">
+                <h3 class="footer-title">Subscribe</h3>
+                <div class="subscribe-text">
+                  <p>Enter  your email and get latest updates and offers subscribe us</p>
+                </div>
+                <form id="footer-form" action="#">
+                  <input placeholder="Your Email ..." type="text">
+                  <button><i class="fas fa-long-arrow-alt-right"></i></button>
+                </form>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="footer-icon-area pt-40 pb-10">
+            <div class="row">
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                <div class="footer-icon-wrapper mb-30">
+                  <div class="footers-icon">
+                    <a href="callto:{{ information.number }}"><i class="fas fa-phone"></i></a>
+                  </div>
+                  <div class="footer-icon-text">
+                    <h4>call us</h4>
+                    <a href="callto:{{ information.number }}"><span>+{{ information.number }}</span></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                <div class="footer-icon-wrapper pl-30 mb-30">
+                  <div class="footers-icon">
+                    <a href="mailto:{{ information.email }}"><i class="fas fa-envelope"></i></a>
+                  </div>
+                  <div class="footer-icon-text">
+                    <h4>Email Us</h4>
+                    <a href="mailto:{{ information.email }}"><span>{{ information.email }}</span></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-4 d-sm-none d-md-block">
+                <div class="footer-icon-wrapper pl-80 mb-30">
+                  <div class="footers-icon">
+                    <a href="#"><i class="fas fa-home"></i></a>
+                  </div>
+                  <div class="footer-icon-text">
+                    <h4>Location</h4>
+                    <span>{{ information.address }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom-area pt-20 pb-20">
+            <div class="row">
+              <div class="col-xl-12">
+                <div class="copyright text-center">
+                  <p>Copyright <i class="far fa-copyright"></i> 2018 BDevs.  All rights reserved</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- footer-end -->
+    {% endblock %}
+
+    {% block js %}
+    {% endblock %}

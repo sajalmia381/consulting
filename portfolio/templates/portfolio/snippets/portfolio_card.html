@@ -1,0 +1,16 @@
+<div class="project-wrapper mb-30">
+  <div class="project-img">
+    <img src="{{ obj.image.url }}" alt="" />
+    <div class="project-content">
+      <span>{{ obj.service.name|title }}</span>
+      <h4>
+        <a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a>
+      </h4>
+    </div>
+    <div class="project-link">
+      <a class="image-link" href="{{ obj.image.url }}">
+        <i class="fas fa-long-arrow-alt-right"></i>
+      </a>
+    </div>
+  </div>
+</div>

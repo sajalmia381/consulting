@@ -1,0 +1,130 @@
+{% extends 'base-site.html' %}
+{% load static %}
+    {% block title %}{% endblock %}
+
+    {% block css %}
+    {% endblock %}
+
+    {% block breadcrumb %}
+    <!-- breadcrumb-area-start -->
+    <div class="breadcrumb-area pt-245 pb-245 " style="background-image:url({% static 'img/bg/bg9.jpg' %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="breadcrumb-wrapper text-center">
+                        <div class="breadcrumb-text">
+                            <h1>Portfolio Details</h1>
+                        </div>
+                        <div class="breadcrumb-menu mt-20">
+                            <ul>
+                                <li><a href="{% url 'home:index' %}">home</a></li>
+                                <li><a href="{% url 'portfolio:portfolio_list' %}">Portfolios</a></li>
+                                <li><span>{{ object.service.name }}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb-area-start -->
+    {% endblock %}
+
+    {% block content %}
+    <!-- case-details-area-start -->
+    <div class="case-details-area pt-110 pb-60">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-8 col-lg-8">
+            <div class="case-details-wrapper">
+              <div class="case-details-img">
+                <img src="{{ object.image.url }}" alt="" />
+              </div>
+              <div class="case-details-text portfolio-desc">
+                <h3>{{ object.title }}</h3>
+                <p>{{ object.details|linebreaks }}</p>
+                {% if object.image_2 and object.image_3 %}
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="lg-port mb-30">
+                      <img src="{{ object.image_2.url }}" alt="">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="lg-port mb-30">
+                      <img src="{{ object.image_3.url }}" alt="">
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                <p>{{ object.details_2|linebreaks }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-4 mb-30">
+            <div class="widget mb-60">
+              <div class="widget-heading">
+                <h2><i class="fas fa-chess-board"></i> Portfolio Catergory</h2>
+              </div>
+              <ul class="service-details-menu">
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Business Consulting</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Financial Support</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Invesment Planning</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Tours & Travels</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Insurance Policy</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Banking Management</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Save Money</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Digital Marketing</a></li>
+              </ul>
+            </div>
+            <div class="widget theme-bg">
+              <div class="service-details-left">
+                <div class="service-left-text">
+                  <h3>Do you have any Question?</h3>
+                  <p>Maecenas fermentum conse quat onec fermentum. Pellentesque malesuada nulla a miduis sapien sem </p>
+                  <a href="#"><i class="fas fa-phone-volume"></i> 0123456789</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- case-details-area-end -->
+    <!-- experience-area-start -->
+    <div class="experience-area yellow-bg pt-50 pb-30">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-8 col-lg-9 col-md-8">
+            <div class="experience-text mb-20">
+              <h2>Needs experience business consultant?</h2>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-3 col-md-4">
+            <div class="experience-button text-md-right mb-20">
+              <a class="btn" href="#">contact us <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- experience-area-end -->
+    <!-- brand-area-start -->
+		<div class="brand-area pt-80 pb-80">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="brand-active owl-carousel">
+            {% for partner in partners %}
+						<div class="col-xl-12">
+              {% include 'snippets/partner.html' %}
+						</div>
+            {% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- brand-area-end -->
+    {% endblock %}
+
+    {% block js %}
+    {% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'base-site.html' %}
+{% load staticfiles %}
+    {% block title %}{% endblock %}
+
+    {% block css %}
+    {% endblock %}
+
+    {% block breadcrumb %}
+    <!-- breadcrumb-area-start -->
+    <div class="breadcrumb-area pt-245 pb-245 " style="background-image:url({% static 'img/bg/bg9.jpg' %})">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-12">
+						<div class="breadcrumb-text text-center">
+							<h1>Latest Blog</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- breadcrumb-area-start -->
+    {% endblock %}
+
+    {% block content %}
+    <!-- latest-news-area-start -->
+		<div class="latest-news-area pt-120 pb-70">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-8 col-lg-8 col-sm-12">
+						<div class="blog-list">
+              {% for object in object_list %}
+							<div class="latest-news-wrapper mb-50">
+								<div class="latest-news-img">
+									<a href="{{ object.get_absolute_url }}">
+										<img src="{{ object.image.url }}" alt="" />
+									</a>
+								</div>
+								<div class="latest-news-text">
+									<div class="blog-meta">
+										<span>By {{ object.user }}</span>
+										<span>{{ object.timestrimp }}</span>
+									</div>
+									<h4>
+										<a href="{{ object.get_absolute_url }}">{{ object.title }}</a>
+									</h4>
+									<p>{{ object.paragraph|truncatewords:35 }}</p>
+									<a href="{{ object.get_absolute_url }}"> Read more
+										<i class="fas fa-long-arrow-alt-right"></i>
+									</a>
+								</div>
+							</div>
+              {% endfor %}
+						</div>
+            {% if is_paginated %}
+                <!-- <div class="pagination">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1">&laquo; first</a>
+                            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </span>
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">next</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div> -->
+                <nav class="blog-pagination mb-50" aria-label="Page navigation example">
+                  <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item">
+                      <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                        <i class="fas fa-chevron-left"></i>
+                      </a>
+                    </li>
+                    {% endif %}
+                    {% if page_obj.has_previous %}
+                    <li class="page-item">
+                      <a class="page-link" href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+                    </li>
+                    {% endif %}
+                    <li class="page-item active">
+                      <a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a>
+                    </li>
+                    {% if page_obj.has_next %}
+                    <li class="page-item">
+                      <a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+                    </li>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                    <li class="page-item">
+                      <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                        <i class="fas fa-chevron-right"></i>
+                      </a>
+                    </li>
+                    {% endif %}
+                  </ul>
+                </nav>
+            {% endif %}
+
+					</div>
+					<div class="col-xl-4 col-lg-4">
+              {% include 'blog/snippets/blog-side-bar.html' %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- latest-news-area-end -->
+    {% endblock %}
+
+    {% block js %}
+    {% endblock %}
