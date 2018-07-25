@@ -18,8 +18,9 @@ def get_portfolio_image_name(instance, filename):
 def get_default_category():
     try:
         return Category.objects.get(name='other').pk
-    except Category.DoesNotexist:
+    except Category.DoesNotExist:
         return None
+
 
 class Portfolio(models.Model):
 
