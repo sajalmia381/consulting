@@ -36,7 +36,7 @@ class ContactForm(forms.ModelForm):
         # else:
         #     raise forms.ValidationError('Must Have a name')
 
-        if len(name) >= 5:
+        if len(name) <= 5:
             raise forms.ValidationError('Name is Too Short')
         return name
 
